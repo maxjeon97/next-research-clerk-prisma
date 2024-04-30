@@ -23,26 +23,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-/*
-
-import { SignUp } from "@clerk/nextjs";
-
-
-export default function SignUpPage () {
-    return (
-     <SignUp path="/sign-up" />
-    )
-}
-
-
-import { SignIn } from "@clerk/nextjs"
-
-export default function SignInPage() {
-    return (
-      <SignIn path="/sign-in" />
-    )
-}
-
-*/

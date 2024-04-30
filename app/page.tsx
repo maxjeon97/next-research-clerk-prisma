@@ -1,12 +1,16 @@
+import NavBar from "@/components/NavBar";
+import { currentUser } from "@clerk/nextjs/server";
 
-import Header from "../components/header";
+export default async function Home() {
 
+  const user = await currentUser();
 
-export default function Home() {
+  const greeting = user ? user.firstName : "Stranger";
+
   return (
     <div>
-      <Header />
-      <div>Hello World</div>
-    </ div>
+      <NavBar />
+      <div>Hello {greeting}!</div>
+    </div>
   );
 }

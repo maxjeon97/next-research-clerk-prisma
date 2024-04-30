@@ -8,11 +8,7 @@ generator client {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  phone        String
-  firstName    String
-  lastName     String
+  id           String      @id @unique
   offers       Offer[]
 }
 
@@ -22,5 +18,5 @@ model Offer {
   updatedAt  DateTime   @updatedAt
   amount     Int
   buyer      User       @relation(fields: [buyerId], references: [id])
-  buyerId    Int
+  buyerId    String
 }
