@@ -3,19 +3,20 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-/**POST request to api/users
+
+/**POST request to api/users/delete
  *
- * Adds user to the database using the Prisma Client
+ * Deletes user from the database using the Prisma Client
  */
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log("In POST request");
-  await prisma.user.create({
-    data: {
+
+  await prisma.user.delete({
+    where: {
       id: body.data.id
     }
   });
 
-  return NextResponse.json({ created: true }, { status: 201 });
+  return NextResponse.json({ deleted: true }, { status: 200 });
 }

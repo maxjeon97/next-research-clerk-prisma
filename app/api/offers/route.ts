@@ -3,17 +3,18 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-/**POST request to api/users
+/**POST request to api/offers
  *
- * Adds user to the database using the Prisma Client
+ * Adds offer to the database
  */
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log("In POST request");
-  await prisma.user.create({
+
+  await prisma.offer.create({
     data: {
-      id: body.data.id
+      amount: body.data.amount,
+      buyerId: body.data.id
     }
   });
 
