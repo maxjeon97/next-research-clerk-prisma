@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { uuid } from 'uuidv4';
 import { PropertyObject } from "@/types/types";
 import Property from "@/components/Property";
+import AddPropertyForm from "@/components/AddPropertyForm"
 
 
 const API_BASE_URL = "https://angry-meals-rescue.loca.lt/api";
@@ -31,6 +32,7 @@ export default async function Properties() {
       <div className="Properties">
         {propsData.map((p: PropertyObject) => <Property key={uuid()} property={p} />)}
       </div>
+        {isAdmin && <AddPropertyForm />}
     </div>
   );
 }

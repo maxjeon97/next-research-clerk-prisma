@@ -16,6 +16,5 @@ export type PropertyObject = {
   id: number,
   description: string,
   address: string,
-  startingPrice: number,
-  available: boolean;
+  startingPrice: number;
 };

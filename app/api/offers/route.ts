@@ -26,9 +26,9 @@ export async function POST(req: NextRequest) {
 
   await prisma.offer.create({
     data: {
-      amount: body.data.amount,
-      buyerId: body.data.buyerId,
-      propertyId: body.data.propertyId
+      amount: body.amount,
+      buyerId: body.buyerId,
+      propertyId: body.propertyId
     }
   });
 

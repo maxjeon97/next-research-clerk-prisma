@@ -27,10 +27,9 @@ export async function POST(req: NextRequest) {
 
   await prisma.property.create({
     data: {
-      description: body.data.description,
-      address: body.data.address,
-      startingPrice: body.data.startingPrice,
-      available: body.data.available
+      description: body.description,
+      address: body.address,
+      startingPrice: body.startingPrice
     }
   });
 

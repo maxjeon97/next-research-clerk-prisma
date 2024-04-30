@@ -29,6 +29,5 @@ model Property {
   description   String
   address       String
   startingPrice Int
-  available     Boolean
   offers        Offer[]
 }
