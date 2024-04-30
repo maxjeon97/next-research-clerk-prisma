@@ -3,6 +3,10 @@ import { auth } from "@clerk/nextjs/server";
 import { UserButton } from "@clerk/nextjs";
 import './NavBar.css';
 
+/**
+ * NavBar component that renders different links depending on whether a
+ * user is logged in or not
+ */
 export default async function NavBar() {
     const { userId } = auth();
 

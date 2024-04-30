@@ -3,6 +3,17 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+/**GET request to api/users
+ *
+ * Gets user information
+ */
+
+export function GET(request: NextRequest) {
+  console.log("In GET SPECIFIC USER request");
+
+  return NextResponse.json({ in: "hello" });
+}
+
 /**POST request to api/users
  *
  * Adds user to the database using the Prisma Client

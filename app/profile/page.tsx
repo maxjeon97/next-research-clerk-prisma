@@ -25,18 +25,3 @@ export default function Profile() {
     )
 
 }
-
-// 'use client';
-// import { useAuth } from "@clerk/nextjs";
-
-// export default function Profile(){
-//   const { has } = useAuth();
-
-//   const canManageSettings = has({ permission: "org:team_settings:manage" });
-
-//   if(!canManageSettings) return null;
-
-//   return (
-//     <div>hello</div>
-//   )
-// }
