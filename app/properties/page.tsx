@@ -1,12 +1,12 @@
 import NavBar from "@/components/NavBar";
 import { auth } from "@clerk/nextjs/server";
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 import { PropertyObject } from "@/types/types";
 import Property from "@/components/Property";
 import AddPropertyForm from "@/components/AddPropertyForm"
 
 
-const API_BASE_URL = "https://angry-meals-rescue.loca.lt/api";
+const API_BASE_URL = "http://localhost:3000/api";
 
 /**
  * Properties component
@@ -14,6 +14,9 @@ const API_BASE_URL = "https://angry-meals-rescue.loca.lt/api";
  * Renders list of properties for users to look through
  *
  * If admin, also have a button that allows you to add a property
+ *
+ * State:
+ * - properties
  */
 
 export default async function Properties() {
@@ -26,11 +29,12 @@ export default async function Properties() {
   const propsResponse = await fetch(`${API_BASE_URL}/properties`);
   const propsData = await propsResponse.json();
 
+
   return (
     <div>
       <NavBar />
       <div className="Properties">
-        {propsData.map((p: PropertyObject) => <Property key={uuid()} property={p} />)}
+        {propsData.properties.map((p: PropertyObject) => <Property key={uuid()} property={p} />)}
       </div>
         {isAdmin && <AddPropertyForm />}
     </div>

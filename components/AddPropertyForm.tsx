@@ -1,22 +1,27 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+"use client"
 
+import { ChangeEvent, FormEvent, use, useState } from "react";
+import { useRouter } from "next/navigation";
 
-
-const API_BASE_URL = "https://angry-meals-rescue.loca.lt/api";
+const API_BASE_URL = "http://localhost:3000/api";
 
 
 /** Form to add a property */
 export default function AddPropertyForm() {
-
-    const [formData, setFormData] = useState({
+    const initialData = {
         description: "",
         address: "",
         startingPrice: ""
-    });
+    };
+
+    const [formData, setFormData] = useState(initialData);
+
+    const router = useRouter();
 
     /** handles form submission */
     async function handleSubmit(evt: FormEvent<HTMLFormElement>) {
         evt.preventDefault();
+        console.log(formData);
         await fetch(`${API_BASE_URL}/properties`, {
             method: "POST",
             headers: {
@@ -28,7 +33,8 @@ export default function AddPropertyForm() {
                 startingPrice: formData.startingPrice,
             })
         });
-
+        setFormData(initialData);
+        router.refresh();
     }
 
     /** handles input change */

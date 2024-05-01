@@ -1,5 +1,6 @@
 import { PropertyObject } from "@/types/types";
 import MakeOfferForm from './MakeOfferForm';
+import { auth } from "@clerk/nextjs/server";
 
 
 /**
@@ -9,13 +10,16 @@ import MakeOfferForm from './MakeOfferForm';
 */
 export default function Property({ property }: { property: PropertyObject; }) {
     const { id, description, address, startingPrice } = property;
+    const { userId } = auth();
 
-    return (
-        <div>
-            <h1>{address}</h1>
-            <p>{description}</p>
-            <p>Starting price: {startingPrice}</p>
-            <MakeOfferForm propertyId={id}/>
-        </div>
-    );
+    if (userId) {
+        return (
+            <div>
+                <h1>{address}</h1>
+                <p>{description}</p>
+                <p>Starting price: {startingPrice}</p>
+                <MakeOfferForm propertyId={id} userId={userId} />
+            </div>
+        );
+    }
 }

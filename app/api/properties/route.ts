@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
 
-  const properties = await prisma.user.findMany();
+  const properties = await prisma.property.findMany();
 
   return NextResponse.json({ properties });
 }
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     data: {
       description: body.description,
       address: body.address,
-      startingPrice: body.startingPrice
+      startingPrice: Number(body.startingPrice)
     }
   });
 

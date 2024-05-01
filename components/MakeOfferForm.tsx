@@ -1,15 +1,19 @@
+"use client"
+
+import { init } from "next/dist/compiled/webpack/webpack";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { auth } from "@clerk/nextjs/server";
 
 
 
-const API_BASE_URL = "https://angry-meals-rescue.loca.lt/api";
+const API_BASE_URL = "http://localhost:3000/api";
 
 
 /** Form to make an offer on a property */
-export default function MakeOfferForm({ propertyId }: { propertyId: number; }) {
-    const { userId } = auth();
-    const [formData, setFormData] = useState({ amount: "" });
+export default function MakeOfferForm({ propertyId, userId }: { propertyId: number, userId: string }) {
+    const initialData = { amount: "" };
+
+    const [formData, setFormData] = useState(initialData);
+
     /** handles form submission */
     async function handleSubmit(evt: FormEvent<HTMLFormElement>) {
         evt.preventDefault();
@@ -24,7 +28,7 @@ export default function MakeOfferForm({ propertyId }: { propertyId: number; }) {
                 propertyId: propertyId
             })
         });
-
+        setFormData(initialData);
     }
 
     /** handles input change */

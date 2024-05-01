@@ -23,6 +23,7 @@ export default async function NavBar() {
         return (
             <div>
                 <Link href='/offers'> Offers </Link>
+                <Link href='/properties'> Properties </Link>
                 <UserButton />
             </div>);
     }
