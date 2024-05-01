@@ -4,6 +4,7 @@ import { OfferObject } from "@/types/types";
 import { useAuth } from "@clerk/nextjs";
 import DeleteButton from "./DeleteButton";
 import { useRouter } from "next/navigation";
+import EditOfferForm from "./EditOfferForm";
 
 const API_BASE_URL = "http://localhost:3000/api";
 
@@ -30,11 +31,26 @@ export default function Offer({ offer }: { offer: OfferObject; }) {
         router.refresh();
     }
 
+    async function handleUpdate(formData: {id: number, amount: number}) : Promise<void> {
+        await fetch(`${API_BASE_URL}/offers/update`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                id: id,
+                amount: formData.amount
+            })
+        });
+        router.refresh();
+    }
+
     if (userId) {
         return (
             <div>
-                <h1>Offer ID#{id}</h1>
+                <h1>Offer ID #{id}</h1>
                 <p>Amount Offered: ${amount}</p>
+                <EditOfferForm handleUpdate={handleUpdate} offer={offer}/>
                 <h2>Property Information</h2>
                 <p>Address: {property.address}</p>
                 <p>Description: {property.description}</p>

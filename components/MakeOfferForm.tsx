@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 
@@ -10,6 +11,7 @@ const API_BASE_URL = "http://localhost:3000/api";
 /** Form to make an offer on a property */
 export default function MakeOfferForm({ propertyId, userId }: { propertyId: number, userId: string }) {
     const initialData = { amount: "" };
+    const router = useRouter();
 
     const [formData, setFormData] = useState(initialData);
 
@@ -28,6 +30,7 @@ export default function MakeOfferForm({ propertyId, userId }: { propertyId: numb
             })
         });
         setFormData(initialData);
+        router.refresh();
     }
 
     /** handles input change */
