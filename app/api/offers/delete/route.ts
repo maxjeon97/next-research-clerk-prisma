@@ -4,19 +4,19 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 
-/**POST request to api/users/delete
+/**DELETE request to api/offers/delete
  *
- * Deletes user from the database using the Prisma Client
+ * Deletes offer from the database
  */
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
-  await prisma.user.delete({
+  await prisma.offer.delete({
     where: {
-      id: body.data.id
+      id: body.id
     }
   });
 
-  return NextResponse.json({ userDeleted: true }, { status: 200 });
+  return NextResponse.json({ offerDeleted: true }, { status: 200 });
 }

@@ -9,7 +9,8 @@ export type OfferObject = {
   updatedAt: string,
   amount: number,
   buyerId: string,
-  propertyId: number;
+  propertyId: number,
+  property: PropertyObject;
 };
 
 export type PropertyObject = {

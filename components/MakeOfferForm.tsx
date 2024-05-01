@@ -1,6 +1,5 @@
 "use client"
 
-import { init } from "next/dist/compiled/webpack/webpack";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 
@@ -43,7 +42,7 @@ export default function MakeOfferForm({ propertyId, userId }: { propertyId: numb
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="amount">Offer Amount</label>
+            <label htmlFor="amount">Offer Amount: </label>
             <input
                                 id="amount"
                                 type="number"

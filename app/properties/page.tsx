@@ -1,9 +1,8 @@
 import NavBar from "@/components/NavBar";
 import { auth } from "@clerk/nextjs/server";
-import { v4 as uuid } from 'uuid';
 import { PropertyObject } from "@/types/types";
 import Property from "@/components/Property";
-import AddPropertyForm from "@/components/AddPropertyForm"
+import AddPropertyForm from "@/components/AddPropertyForm";
 
 
 const API_BASE_URL = "http://localhost:3000/api";
@@ -34,9 +33,10 @@ export default async function Properties() {
     <div>
       <NavBar />
       <div className="Properties">
-        {propsData.properties.map((p: PropertyObject) => <Property key={uuid()} property={p} />)}
+        {propsData.properties.map((p: PropertyObject) => <Property key={p.id} property={p} />)}
       </div>
-        {isAdmin && <AddPropertyForm />}
+      <br />
+      {isAdmin && <AddPropertyForm />}
     </div>
   );
 }

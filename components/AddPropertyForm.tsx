@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { ChangeEvent, FormEvent, use, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const API_BASE_URL = "http://localhost:3000/api";
@@ -21,7 +21,6 @@ export default function AddPropertyForm() {
     /** handles form submission */
     async function handleSubmit(evt: FormEvent<HTMLFormElement>) {
         evt.preventDefault();
-        console.log(formData);
         await fetch(`${API_BASE_URL}/properties`, {
             method: "POST",
             headers: {
@@ -49,32 +48,34 @@ export default function AddPropertyForm() {
 
     return (
         <div>
-            <h3>Add a Property</h3>
+            <h2>Add a Property</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="startingPrice">Starting Price</label>
+                <label htmlFor="address">Address: </label>
                 <input
-                                    id="startingPrice"
-                                    type="number"
-                                    name="startingPrice"
-                                    value={formData.startingPrice}
-                                    onChange={handleChange} />
-                <label htmlFor="description">Description</label>
+                    id="address"
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange} />
+                <br />
+                <label htmlFor="description">Description: </label>
                 <input
-                                    id="description"
-                                    type="text"
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleChange} />
-                <label htmlFor="address">Address</label>
+                    id="description"
+                    type="text"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange} />
+                <br />
+                <label htmlFor="startingPrice">Starting Price: </label>
                 <input
-                                    id="address"
-                                    type="text"
-                                    name="address"
-                                    value={formData.address}
-                                    onChange={handleChange} />
-
+                    id="startingPrice"
+                    type="number"
+                    name="startingPrice"
+                    value={formData.startingPrice}
+                    onChange={handleChange} />
+                <br />
                 <button>Add Property</button>
             </form>
         </div>
-    )
+    );
 }
