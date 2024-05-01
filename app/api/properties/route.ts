@@ -11,7 +11,11 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
 
-  const properties = await prisma.property.findMany();
+  const properties = await prisma.property.findMany({
+    orderBy: {
+      id: "asc"
+    }
+  });
 
   return NextResponse.json({ properties });
 }

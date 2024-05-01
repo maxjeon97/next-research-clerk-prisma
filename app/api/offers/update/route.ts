@@ -10,7 +10,6 @@ const prisma = new PrismaClient();
  */
 
 export async function POST(req: NextRequest) {
-  console.log('****', "inupdate")
   const body = await req.json();
 
   const updatedOffer = await prisma.offer.update({

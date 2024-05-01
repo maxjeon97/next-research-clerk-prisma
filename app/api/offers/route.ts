@@ -11,7 +11,11 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
 
-  const offers = await prisma.offer.findMany();
+  const offers = await prisma.offer.findMany({
+    orderBy: {
+      id: 'asc'
+    }
+  });
 
   return NextResponse.json({ offers });
 }

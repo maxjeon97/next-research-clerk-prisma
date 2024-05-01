@@ -18,7 +18,6 @@ export default async function Offers() {
 
   const userResponse = await fetch(`${API_BASE_URL}/users/${userId}/offers`);
   const userData = await userResponse.json();
-  console.log(userData);
 
   return (
     <div>
